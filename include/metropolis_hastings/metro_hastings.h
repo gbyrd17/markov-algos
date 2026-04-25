@@ -11,14 +11,6 @@ class MetropolisHastings {
 private:
   std::function<double()> target_dist;
 
-  double adaptive_proposal(double pos);
-
-  /* covariance depends on prvious positions,
-   *   dimension of target distribution
-   *
-   */
-  double covariance();
-
 public:
   MetropolisHastings(std::function<double()> target);
 };
