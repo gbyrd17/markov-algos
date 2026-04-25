@@ -8,9 +8,11 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Catch2 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
+find_package(Eigen3 CONFIG REQUIRED)
+find_package(OpenMP REQUIRED)
 
 add_executable(markov_algos 
-    src/main.cpp 
+    main.cpp 
 )
 
 target_include_directories(markov_algos PUBLIC 
@@ -22,6 +24,8 @@ target_link_libraries(markov_algos PRIVATE
     Catch2::Catch2
     Catch2::Catch2WithMain
     fmt::fmt
+    OpenMP::OpenMP_CXX
+    Eigen3::Eigen
 )
 
 if(MSVC)
