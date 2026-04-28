@@ -5,6 +5,7 @@ Proposer::Proposer(size_t dimension, std::mt19937 &shared_rng)
     : d(dimension),
       log_l(std::log(2.38 / std::sqrt(static_cast<double>(dimension)))),
       rng(shared_rng), dist(0.0, 1.0) {
+
   z_buffer.resize(d);
   mean.setZero(d);
   covariance.setIdentity(d, d);
@@ -16,7 +17,7 @@ Eigen::VectorXd Proposer::suggest(const Eigen::VectorXd &current_state) {
     z_buffer(i) = dist(rng);
   }
   return current_state +
-         std::exp(log_l) * (L.triangularView<Eigen::Lower>() * z_buffer);
+         std::exp(log_l) * (L.triangularView<Eigen::Lower>() * z_buffer).eval();
 }
 
 void Proposer::update_statistics(const Eigen::VectorXd &x, size_t n) {

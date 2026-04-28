@@ -1,0 +1,11 @@
+[project]
+name = "markov-chains"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "arviz>=1.1.0",
+    "matplotlib>=3.10.9",
+    "pandas>=3.0.2",
+]

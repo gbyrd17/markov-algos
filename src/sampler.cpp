@@ -3,6 +3,7 @@
 void Sampler::run(const size_t warmup = 500, const size_t adapt_limit = 2500) {
   double current_log_prob = target_model.log_prob(current_sample);
 
+  size_t history_idx = 0;
   for (size_t n = 1; n < n_max; ++n) {
     // first we sample (in log space)
     Eigen::VectorXd propsed_sample = proposer.suggest(current_sample);
@@ -13,7 +14,7 @@ void Sampler::run(const size_t warmup = 500, const size_t adapt_limit = 2500) {
     double alpha = std::min(1.0, std::exp(log_alpha));
 
     // draw from standard uniform to compare new sample
-    if (log_alpha >= 0 || std::log(dist(rng) < log_alpha)) {
+    if (log_alpha >= 0 || std::log(dist(rng)) < log_alpha) {
       current_sample = propsed_sample;
       current_log_prob = proposed_log_prob;
     }
@@ -24,6 +25,11 @@ void Sampler::run(const size_t warmup = 500, const size_t adapt_limit = 2500) {
     }
 
     // record history
-    history.col(n - 1) = current_sample;
+    if (thinning_factor > 1 && n % thinning_factor == 0) {
+      history.col(history_idx) = current_sample;
+      ++history_idx;
+    } else if (thinning_factor < 1) {
+      history.col(n - 1) = current_sample;
+    }
   }
 }

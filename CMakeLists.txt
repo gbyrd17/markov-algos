@@ -13,6 +13,9 @@ find_package(OpenMP REQUIRED)
 
 add_executable(markov_algos 
     main.cpp 
+    ./src/diagnostics.cpp
+    ./src/proposer.cpp
+    ./src/sampler.cpp
 )
 
 target_include_directories(markov_algos PUBLIC 
