@@ -47,7 +47,7 @@ void export_chains(const std::vector<Eigen::MatrixXd> &chains,
 }
 
 void init_output_dir() {
-  std::string path = "output/convergence_results.txt";
+  std::string path = "./output/";
   try {
     if (fs::create_directories(path)) {
       std::cout << "Directory 'output' created succesfully!\n";
