@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "dependencies": [
     "catch2",
-    "fmt"
-  ]
+    "fmt",
+    "eigen3"
+  ],
+  "builtin-baseline": "89dd0f4d241136b843fb55813b2f0fa6448c204d"
 }

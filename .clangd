@@ -1,0 +1,9 @@
+CompileFlags:
+  Add: 
+    - "-fopenmp"
+    - "-std=c++17"
+    - "-I/usr/lib/gcc/x86_64-linux-gnu/13/include" 
+    - "-I/usr/lib/gcc/x86_64-linux-gnu/12/include"
+  CompilationDatabase: "build"
+Diagnostics:
+  Suppress: ["builtin_definition", "conflicting_types"]
