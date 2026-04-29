@@ -1,0 +1,41 @@
+---------- Convergence Results ---------
+Parameter 0:
+r-hat:	1.00122(Passed)
+ESS:	30000.1
+------
+Parameter 1:
+r-hat:	1.00066(Passed)
+ESS:	30000.1
+------
+Parameter 2:
+r-hat:	1.00154(Passed)
+ESS:	40000
+------
+Parameter 3:
+r-hat:	1.00381(Passed)
+ESS:	40000
+------
+Parameter 4:
+r-hat:	1.00434(Passed)
+ESS:	30000
+------
+Parameter 5:
+r-hat:	1.00389(Passed)
+ESS:	40000
+------
+Parameter 6:
+r-hat:	1.00558(Passed)
+ESS:	20000.1
+------
+Parameter 7:
+r-hat:	1.00074(Passed)
+ESS:	30000
+------
+Parameter 8:
+r-hat:	1.00208(Passed)
+ESS:	30000
+------
+Parameter 9:
+r-hat:	1.00233(Passed)
+ESS:	20000.2
+------

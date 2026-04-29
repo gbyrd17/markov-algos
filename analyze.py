@@ -34,7 +34,7 @@ def analyze_mcmc(csv_path: str):
     # summary statistics (the most important part for high-dim)
     summary = az.summary(dataset)
     with open("./output/diagnostics.txt", "w") as f:
-        f.write("\n--- Diagnostic Summary ---\n")
+        f.write("--- Diagnostic Summary ---\n")
         f.write(summary.to_string())
     print("Diagnostic results written to './output/diagnostics.txt'")
 
