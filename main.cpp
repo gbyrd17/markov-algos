@@ -46,10 +46,9 @@ void export_chains(const std::vector<Eigen::MatrixXd> &chains,
   std::cout << "Chains written to './output/output.csv'" << std::endl;
 }
 
-void init_output_dir() {
-  std::string path = "./output/";
+void init_output_dir(std::string out_path) {
   try {
-    if (fs::create_directories(path)) {
+    if (fs::create_directories(out_path)) {
       std::cout << "Directory 'output' created succesfully!\n";
     } else {
       std::cout << "Directory 'output' either could not be created or already "
@@ -61,6 +60,8 @@ void init_output_dir() {
 }
 
 int main() {
+  std::string output_path = "output"; 
+
   const int target_dim = 10;
 
   //  auto rosenbrock_target = [](const Eigen::VectorXd &x) -> double {
@@ -117,9 +118,9 @@ int main() {
 
   DiagnosticResult results = Diagnostic::calculate(all_chains);
 
-  init_output_dir();
+  init_output_dir(output_path);
 
-  std::ofstream convFile("./output/convergence_results.txt");
+  std::ofstream convFile(output_path + "/convergence_results.txt");
 
   if (convFile.is_open()) {
     convFile << "---------- Convergence Results ---------" << std::endl;
@@ -130,12 +131,13 @@ int main() {
                << std::endl;
       convFile << "ESS:\t" << results.ess(i) << "\n------" << std::endl;
     }
+  convFile.close();
   }
   std::cout
       << "Convergence results written to './output/convergence_results.txt'"
       << std::endl;
 
-  const std::string &file = "./output/output.csv";
+  const std::string &file = output_path + "/output.csv";
   export_chains(all_chains, file);
 
   return 0;

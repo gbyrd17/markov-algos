@@ -6,6 +6,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+if (WIN32)
+  add_definitions(-DNOMINMAX)
+  set(VCPKG_TARGET_TRIPLET "x64-windows")
+else()
+  set(VCPKG_TARGET_TRIPLET " x64-linux")
+endif()
+
 find_package(Catch2 CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 find_package(Eigen3 CONFIG REQUIRED)
